@@ -1,0 +1,25 @@
+.card {
+    background-color: var(--white);
+    border-radius: 7px;
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+}
+.card > * {
+    flex: 1 1 100%;
+}
+
+@media all and (min-width: 1024px) {
+
+}
+@media all and (min-width: 1540px) {
+    .card {
+        padding: 0 60px;
+    }
+    .card:hover h2 a, card:focus-within h2 a {
+        color: var(--orange);
+    }
+    .card:hover, .card:focus-within {
+        outline: 1px solid var(--greyD9);
+    }
+}
