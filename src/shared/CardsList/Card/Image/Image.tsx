@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './cardimage.css';
+import styles from './image.css';
 
-export function CardImage() {
+export function Image() {
   return (
     <div className={styles.preview}>
       <img

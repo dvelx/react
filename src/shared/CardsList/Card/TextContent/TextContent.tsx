@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './cardtextcontent.css';
+import styles from './textcontent.css';
 
-export function CardTextContent() {
+export function TextContent() {
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
