@@ -3,20 +3,7 @@
     top: 17px;
     right: 15px;
 }
-.menuButton {
-    width: 31px;
-    height: 31px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(90deg);
-    border-radius: 31px;
-    background: transparent;
-    border: 0;
-}
-.menuButton:active, .menuButton:hover {
-    background-color: rgba(51, 51, 51, 0.1);
-}
+
 .controls {
     padding: 10px 20px;
     display: flex;

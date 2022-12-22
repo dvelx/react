@@ -11,6 +11,7 @@
     --greyC4:  #c4c4c4;
     --grey99:  #999999;
     --grey66:  #666666;
+    --greyEC:  #ECECEC;
 }
 
 body {
@@ -43,4 +44,8 @@ button {
     border: 0;
     background: transparent;
     cursor: pointer;
+}
+h1,h2,h3,h4,h5,h6,p {
+    padding: 0;
+    margin: 0;
 }
