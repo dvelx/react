@@ -8,11 +8,56 @@ import {CommentIcon, MenuIcon, SaveIcon, SharedIcon, StopIcon, WarningIcon} from
 
 
 const MENULIST = [
-  {As: 'div' as const, element: <CommentIcon />, text: 'Kомментарии', className: 'menuItem' },
-  {As: 'div' as const, element: <SharedIcon />, text: 'Поделиться', className: 'menuItem'},
-  {As: 'div' as const, element: <StopIcon />, text: 'Скрыть', className: 'menuItem'},
-  {As: 'div' as const, element: <SaveIcon />, text: 'Сохранить', className: 'menuItem'},
-  {As: 'div' as const, element: <WarningIcon />, text: 'Пожаловаться', className: 'menuItem'},
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <CommentIcon />
+        <p>Комментарии</p>
+      </div>
+    ),
+    className: styles.menuItem
+  },
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <SharedIcon />
+        <p>Поделиться</p>
+      </div>
+    ),
+    className: styles.menuItem
+  },
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <StopIcon />
+        <p>Скрыть</p>
+      </div>
+    ),
+    className: styles.menuItem
+  },
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <SaveIcon />
+        <p>Сохранить</p>
+      </div>
+    ),
+    className: styles.menuItem
+  },
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <WarningIcon />
+        <p>Пожаловаться</p>
+      </div>
+    ),
+    className: styles.menuItem
+  }
 ].map(generateId)
 
 export function MenuDropdown() {

@@ -7,7 +7,6 @@ interface IItem {
   className?: string;
   As?: 'a' | 'li' | 'button' | 'div';
   href?: string;
-  text?: string
 }
 const NOOP = () => {}
 
@@ -18,7 +17,7 @@ interface IGenericListProps {
 export function GenericList({ list }: IGenericListProps) {
   return (
     <>
-      {list.map(({ As = 'div', element, onClick = NOOP,className, id, href, text}) => (
+      {list.map(({ As = 'div', element, onClick = NOOP,className, id, href}) => (
         <As
           className={className}
           onClick={() => onClick(id)}
@@ -26,7 +25,6 @@ export function GenericList({ list }: IGenericListProps) {
           href={href}
         >
           {element}
-          <p>{text}</p>
         </As>
       ))}
     </>
