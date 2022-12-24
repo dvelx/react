@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './cardslist.css';
 import {Card} from "./Card";
-import {postsContext, PostsContextProvider} from "../context/postsContext";
+import {postsContext} from "../context/postsContext";
+
 
 export function CardsList() {
-  const posts = React.useContext(postsContext)
+  const posts = useContext(postsContext)
 
   return (
     <ul className={styles.cardsList}>
-      <PostsContextProvider>
-        <Card />
-      </PostsContextProvider>
+      {posts.map((post) => <Card key={post.id} title={post.title} author={post.author} url={post.url}/>)}
     </ul>
   );
 }

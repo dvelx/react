@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from './textcontent.css';
-
-export function TextContent() {
+interface ITitleProps {
+  author?: string;
+  title?: string;
+}
+export function TextContent({title, author}: ITitleProps) {
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
@@ -10,7 +13,7 @@ export function TextContent() {
             className={styles.avatar}
             src="https://cdn.dribbble.com/users/870476/avatars/mini/9060216b1bc79500eeab603671d5d0a8.png?1574899370"
             alt="avatar"/>
-          <a href="#user-url" className={styles.username}>Дмитрий Гришин</a>
+          <a href="#user-url" className={styles.username}>{author}</a>
         </div>
         <span className={styles.createdAt}>
             <span className={styles.publishedLabel}>опубликовано</span>
@@ -18,7 +21,7 @@ export function TextContent() {
       </div>
       <h2 className={styles.title}>
         <a href="#post-url" className={styles.postLink}>
-          А также базовые сценарии поведения пользователей сервиса
+          {title}
         </a>
       </h2>
     </div>

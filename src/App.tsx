@@ -10,6 +10,7 @@ import {tokenContext} from "./shared/context/tokenContext";
 import {UserContextProvider} from "./shared/context/userContext";
 import {PostsContextProvider} from "./shared/context/postsContext";
 
+
 function AppComponent() {
   const [token] = useToken()
   return (
@@ -18,7 +19,9 @@ function AppComponent() {
         <Layout>
           <Header />
           <Content>
+            <PostsContextProvider>
               <CardsList />
+            </PostsContextProvider>
           </Content>
         </Layout>
       </UserContextProvider>
