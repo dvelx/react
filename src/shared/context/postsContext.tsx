@@ -5,21 +5,23 @@ interface IPostContextObject {
   [N: string]: any
 }
 interface IPostContextData {
-  data?: IPostContextObject;
-  id?: string
-  title?: string
-  author?: string
-  url?: string
+  data: {
+    id?: string
+    author: string;
+    title: string;
+    preview?: {
+      images?: []
+    }
+  }
 }
 
-export const postsContext = React.createContext<IPostContextData[]>([])
+export const postsContext = React.createContext({})
 
 export function PostsContextProvider({ children }: { children: React.ReactNode }) {
-  const [ posts ] = usePostData()
-
+  const posts = usePostData()
 
   return (
-    <postsContext.Provider value={[posts]}>
+    <postsContext.Provider value={posts}>
       {children}
     </postsContext.Provider>
   )
