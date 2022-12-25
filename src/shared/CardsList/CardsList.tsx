@@ -7,11 +7,11 @@ interface IPostContextObject {
   [N: string]: any
 }
 export function CardsList() {
-  const posts: IPostContextObject = useContext(postsContext)
+  const posts = useContext(postsContext)
   if (Object.keys(posts).length > 0) {
     return (
       <ul className={styles.cardsList}>
-        {posts.map((post: any) => <Card key={post.data.id} title={post.data.title} author={post.data.author} url={post.data.url}/>)}
+        {}
       </ul>
     );
   } else {
@@ -22,3 +22,5 @@ export function CardsList() {
     )
   }
 }
+
+//posts.map((post: any) => <Card key={post.data.id} title={post.data.title} author={post.data.author} url={post.data.url}/>)

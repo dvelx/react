@@ -19,9 +19,10 @@ export const postsContext = React.createContext({})
 
 export function PostsContextProvider({ children }: { children: React.ReactNode }) {
   const posts = usePostData()
+  console.log(posts)
 
   return (
-    <postsContext.Provider value={posts}>
+    <postsContext.Provider value={[posts]}>
       {children}
     </postsContext.Provider>
   )
