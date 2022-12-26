@@ -23,7 +23,7 @@ export function CardsList() {
   if (Object.keys(posts).length > 0) {
     return (
       <ul className={styles.cardsList}>
-        { posts.map((post: IPostCardData) => <Card key={post.id} title={post.title} author={post.author} url={post.thumbnail}/>) }
+        { posts.map((post: IPostCardData) => <Card key={post.id} title={post.title} author={post.author} url={post.thumbnail} score={post.score} createdAt={post.created}/>) }
       </ul>
     );
   } else {

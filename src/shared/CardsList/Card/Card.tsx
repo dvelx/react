@@ -5,18 +5,20 @@ import {Image} from "./Image";
 import {Buttons} from "./Buttons";
 
 interface ICardProps {
-  key?: string
-  title?: string
-  author?: string
-  url?: string
+  key?: string;
+  title?: string;
+  author?: string;
+  url?: string;
+  score?: number;
+  createdAt?: number;
 }
-export function Card({title, author, url}: ICardProps) {
+export function Card({title, author, url, score, createdAt}: ICardProps) {
 
   return (
     <li className={styles.card}>
       <TextContent title={title} author={author}/>
       <Image src={url} />
-      <Buttons />
+      <Buttons score={score}/>
     </li>
   );
 }
