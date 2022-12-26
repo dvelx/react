@@ -4,6 +4,7 @@
     display: flex;
     flex-flow: row wrap;
     position: relative;
+    margin-bottom: 40px;
 }
 .card > * {
     flex: 1 1 100%;

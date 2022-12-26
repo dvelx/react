@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './buttons.css';
-import {Dropdown} from "../../../Dropdown";
 import {MenuDropdown} from "../MenuDropdown";
 
 export function Buttons() {
