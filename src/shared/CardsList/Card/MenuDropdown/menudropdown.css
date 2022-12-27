@@ -40,3 +40,6 @@
 .menuContainer div:hover {
     color: #CC6633;
 }
+.menuItem {
+    color: #CC6633 !important;
+}

@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './textcontent.css';
+import {PostModal} from "../../../PostModal";
+
 interface ITitleProps {
   author?: string;
   title?: string;
+  dateCreated: number
 }
-export function TextContent({title, author}: ITitleProps) {
+export function TextContent({title, author, dateCreated}: ITitleProps) {
+  const [ isModalOpened, setIsModalOpen] = useState(false)
+  const calcDateCreatedAt = (new Date().getTime() - (new Date(dateCreated*1000)).getTime())
+  const date = new Date(calcDateCreatedAt).getHours()
+
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
@@ -17,12 +24,16 @@ export function TextContent({title, author}: ITitleProps) {
         </div>
         <span className={styles.createdAt}>
             <span className={styles.publishedLabel}>опубликовано</span>
-            4 часа назад</span>
+          {date} часа назад</span>
       </div>
       <h2 className={styles.title}>
-        <a href="#post-url" className={styles.postLink}>
+        <a href="#post-url" className={styles.postLink} onClick={() => setIsModalOpen(true)}>
           {title}
         </a>
+
+        { isModalOpened && (
+          <PostModal />
+        )}
       </h2>
     </div>
   );

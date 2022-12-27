@@ -13,7 +13,7 @@ interface IPostCardData {
     thumbnail?: string;
     score?: number;
     num_comments?: number;
-    created?: number;
+    created: number;
     sr_detail?: {
       icon_img?: string
     }
@@ -23,7 +23,14 @@ export function CardsList() {
   if (Object.keys(posts).length > 0) {
     return (
       <ul className={styles.cardsList}>
-        { posts.map((post: IPostCardData) => <Card key={post.id} title={post.title} author={post.author} url={post.thumbnail} score={post.score} createdAt={post.created}/>) }
+        { posts.map((post: IPostCardData) => <Card key={post.id}
+                                                   title={post.title}
+                                                   author={post.author}
+                                                   url={post.thumbnail}
+                                                   score={post.score}
+                                                   createdAt={post.created}
+                                                   num_comments={post.num_comments}
+        />) }
       </ul>
     );
   } else {

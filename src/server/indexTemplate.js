@@ -1,6 +1,6 @@
 export const indexTemplate = (content, token) => `
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
@@ -15,6 +15,7 @@ export const indexTemplate = (content, token) => `
 
 <body>
   <div id="react_root">${content}</div>
+  <div id="modal-root"></div>
 </body>
 
 </html>
