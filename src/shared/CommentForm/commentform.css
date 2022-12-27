@@ -1,0 +1,24 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    height: 100px;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 10px;
+    resize: none;
+}
+.input:active, .input:focus-within, .input:focus {
+    border: none;
+    outline: 1px solid var(--orange);
+}
+.button {
+    width: 230px;
+    padding: 20px 50px 20px 50px;
+    background-color: var(--orange);
+    color: var(--white);
+}

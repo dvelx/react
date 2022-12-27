@@ -8,7 +8,6 @@ interface IButtonsProps {
 }
 
 export function Buttons({score, num_comments}: IButtonsProps) {
-  console.log(num_comments)
   return (
     <div>
       <div className={styles.menu}>

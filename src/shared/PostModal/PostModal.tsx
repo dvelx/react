@@ -1,22 +1,48 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from './postmodal.css';
+import {CommentForm} from "../CommentForm";
+import {TextContent} from "../CardsList/Card/TextContent";
+const ReactDOM = require('react-dom')
 
 
+interface IPostModal {
+  onClose?: () => void
+}
 
-export function PostModal() {
+export function PostModal(props: IPostModal) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleCLick(event: MouseEvent) {
+      if (event.target instanceof Node && !ref.current?.contains(event.target)) {
+        props.onClose?.()
+      }
+    }
+
+    document.addEventListener('click', handleCLick)
+
+    return () => {
+      document.removeEventListener('click', handleCLick)
+    }
+  }, []);
   const node = document.querySelector('#modal-root')
   if (!node) return null;
-  return (
-    <div className={styles.modal}>
-      <h2>
-       LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem
-      </h2>
+  return ReactDOM.createPortal((
+    <div className={styles.modal} ref={ref}>
+      <div>
+        <h2>Как то надо сюда передать компонент текст контент карточки</h2>
+      </div>
 
       <div className={styles.modalContent}>
-        <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
-        <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
-        <p>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
+        <p>Есть над чем задуматься: тщательные исследования конкурентов представляют собой не что иное, как квинтэссенцию победы маркетинга над разумом и должны быть ассоциативно распределены по отраслям. Прежде всего, начало повседневной работы по формированию позиции однозначно фиксирует необходимость кластеризации усилий. Но сторонники тоталитаризма в науке и по сей день остаются уделом либералов, которые жаждут быть превращены в посмешище, хотя само их существование приносит несомненную пользу обществу.
+        </p>
+        <p>Есть над чем задуматься: тщательные исследования конкурентов представляют собой не что иное, как квинтэссенцию победы маркетинга над разумом и должны быть ассоциативно распределены по отраслям. Прежде всего, начало повседневной работы по формированию позиции однозначно фиксирует необходимость кластеризации усилий. Но сторонники тоталитаризма в науке и по сей день остаются уделом либералов, которые жаждут быть превращены в посмешище, хотя само их существование приносит несомненную пользу обществу.
+        </p>
+        <p>Есть над чем задуматься: тщательные исследования конкурентов представляют собой не что иное, как квинтэссенцию победы маркетинга над разумом и должны быть ассоциативно распределены по отраслям. Прежде всего, начало повседневной работы по формированию позиции однозначно фиксирует необходимость кластеризации усилий. Но сторонники тоталитаризма в науке и по сей день остаются уделом либералов, которые жаждут быть превращены в посмешище, хотя само их существование приносит несомненную пользу обществу.
+        </p>
       </div>
+
+      <CommentForm />
     </div>
-    );
+    ), node );
 }

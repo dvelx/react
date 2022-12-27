@@ -25,7 +25,9 @@ app.get("/auth", (req, res) => {
       .then(({ data }) => {
         res.send(indexTemplate(ReactDOM.renderToString(App()), data['access_token']));
       })
-      .catch(console.log)
+      .catch(() => {
+          res.send(indexTemplate(ReactDOM.renderToString(App())))
+      })
 });
 
 app.listen(3000, () => {

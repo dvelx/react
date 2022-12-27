@@ -3,8 +3,8 @@ import styles from './menudropdown.css';
 import {generateId} from "../../../../utils/react/generateRandomIndex";
 import {Dropdown} from "../../../Dropdown";
 import {GenericList} from "../../../GenereicList/GenericList";
-import {merge} from "../../../../utils/js/merge";
 import {CommentIcon, MenuIcon, SaveIcon, SharedIcon, StopIcon, WarningIcon} from "../../../Icons";
+const ReactDOM = require('react-dom');
 
 
 const MENULIST = [
@@ -63,7 +63,10 @@ const MENULIST = [
 export function MenuDropdown() {
   const [list, setList] = React.useState(MENULIST);
 
-  return (
+  const node = document.querySelector('#dropdown-root')
+  if (!node) return null
+
+  return ReactDOM.createPortal((
     <div>
       <Dropdown
         button={
@@ -76,5 +79,5 @@ export function MenuDropdown() {
       </div>
       </Dropdown>
     </div>
-  );
+  ), node);
 }

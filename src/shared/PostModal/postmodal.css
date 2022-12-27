@@ -1,0 +1,24 @@
+.modal {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    width: 960px;
+    margin-left: -480px;
+    background-color: var(--white);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    padding: 60px;
+
+}
+
+.modal h2 {
+    word-wrap: break-word;
+}
+.modalContent {
+
+}
+.modalContent p {
+    margin-bottom: 20px;
+}

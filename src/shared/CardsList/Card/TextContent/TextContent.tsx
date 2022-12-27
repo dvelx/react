@@ -32,7 +32,9 @@ export function TextContent({title, author, dateCreated}: ITitleProps) {
         </a>
 
         { isModalOpened && (
-          <PostModal />
+          <PostModal
+            onClose={() => { setIsModalOpen(false) }}
+          />
         )}
       </h2>
     </div>
