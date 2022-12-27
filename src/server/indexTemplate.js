@@ -16,7 +16,7 @@ export const indexTemplate = (content, token) => `
 <body>
   <div id="react_root">${content}</div>
   <div id="modal-root"></div>
-  <div id="dropdown-root"></div>
+  <div id="dropdown-root" style="position: absolute; top: 270px; right: 380px; z-index: 10"></div>
 </body>
 
 </html>
