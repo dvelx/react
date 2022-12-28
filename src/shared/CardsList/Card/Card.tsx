@@ -11,16 +11,16 @@ interface ICardProps {
   url?: string;
   score?: number;
   createdAt: number;
-  num_comments?: number
+  num_comments?: number;
+  id?: string
 }
-export function Card({title, author, url, score, createdAt, num_comments}: ICardProps) {
-
+export function Card({title, author, url, score, createdAt, num_comments, id}: ICardProps) {
 
   return (
     <li className={styles.card}>
       <TextContent title={title} author={author} dateCreated={createdAt}/>
       <Image src={url} />
-      <Buttons score={score} num_comments={num_comments}/>
+      <Buttons score={score} num_comments={num_comments} id={id}/>
     </li>
   );
 }

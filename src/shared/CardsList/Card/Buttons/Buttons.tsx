@@ -5,13 +5,14 @@ import {MenuDropdown} from "../MenuDropdown";
 interface IButtonsProps {
   score?: number
   num_comments?: number
+  id?: string
 }
 
-export function Buttons({score, num_comments}: IButtonsProps) {
+export function Buttons({score, num_comments, id}: IButtonsProps) {
   return (
     <div>
       <div className={styles.menu}>
-        <MenuDropdown />
+        <MenuDropdown id={id}/>
       </div>
 
 

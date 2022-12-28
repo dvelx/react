@@ -30,6 +30,7 @@ export function CardsList() {
                                                    score={post.score}
                                                    createdAt={post.created}
                                                    num_comments={post.num_comments}
+                                                   id={post.id}
         />) }
       </ul>
     );
