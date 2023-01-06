@@ -6,24 +6,26 @@ import {MenuDropdownList} from "../../../MenuDropdownList";
 
 interface IMenuDropdown {
     id?: string;
-    onClick?: () => void
+    onClick?: () => void;
+    left?: number;
+    top?: number;
 }
 
-export function MenuDropdown({id}: IMenuDropdown) {
+export function MenuDropdown({id, left, top}: IMenuDropdown) {
 
   const ref = useRef<HTMLButtonElement>(null)
 
-
-    function onClickBtn(e: MouseEvent) {
-      if (e.target instanceof Node && !ref.current?.contains(e.target)) {
-        console.log(ref.current?.getBoundingClientRect())
-      }
+  function onClickBtn(e: MouseEvent) {
+    if (e.target instanceof Node && ref.current?.contains(e.target)) {
+      left = ref.current?.getBoundingClientRect().x
+      top = ref.current?.getBoundingClientRect().y
     }
+  }
+
     setTimeout(() => {
       document.addEventListener('click', onClickBtn)
+
     })
-
-
 
 
   return (
@@ -34,7 +36,7 @@ export function MenuDropdown({id}: IMenuDropdown) {
           <MenuIcon />
         </button>
       }>
-      <MenuDropdownList id={id}/>
+      <MenuDropdownList id={id} left={left} top={top}/>
       </Dropdown>
     </div>
   );

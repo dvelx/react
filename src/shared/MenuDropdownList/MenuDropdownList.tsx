@@ -61,9 +61,11 @@ const MENULIST = [
 
 interface IMenuDropdownList {
     onClose?: () => void;
-    id?: string
+    id?: string;
+    left?: number;
+    top?: number;
 }
-export function MenuDropdownList({onClose, id}: IMenuDropdownList) {
+export function MenuDropdownList({onClose, id, left, top}: IMenuDropdownList) {
   const [list, setList] = React.useState(MENULIST);
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -82,9 +84,9 @@ export function MenuDropdownList({onClose, id}: IMenuDropdownList) {
 
   const node = document.querySelector('#dropdown-root')
   if (!node) return null
-
+  console.log(left, top)
   return ReactDOM.createPortal((
-      <div className={styles.container} ref={ref} id={id}>
+      <div className={styles.container} ref={ref} id={id} style={{top: top, left: left}}>
           <GenericList list={list} />
       </div>
   ), node);
