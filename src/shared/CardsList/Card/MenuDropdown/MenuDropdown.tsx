@@ -14,19 +14,18 @@ interface IMenuDropdown {
 export function MenuDropdown({id, left, top}: IMenuDropdown) {
 
   const ref = useRef<HTMLButtonElement>(null)
-
+  let leftRect: number
+  let topRect: number
   function onClickBtn(e: MouseEvent) {
+
     if (e.target instanceof Node && ref.current?.contains(e.target)) {
-      left = ref.current?.getBoundingClientRect().x
-      top = ref.current?.getBoundingClientRect().y
+      leftRect = ref.current?.getBoundingClientRect().x
+      topRect = ref.current?.getBoundingClientRect().y
     }
   }
-
     setTimeout(() => {
       document.addEventListener('click', onClickBtn)
-
     })
-
 
   return (
     <div>
@@ -36,7 +35,7 @@ export function MenuDropdown({id, left, top}: IMenuDropdown) {
           <MenuIcon />
         </button>
       }>
-      <MenuDropdownList id={id} left={left} top={top}/>
+      <MenuDropdownList id={id}/>
       </Dropdown>
     </div>
   );
