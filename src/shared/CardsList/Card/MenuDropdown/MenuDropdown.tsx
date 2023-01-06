@@ -9,15 +9,22 @@ interface IMenuDropdown {
     onClick?: () => void
 }
 
-export function MenuDropdown({id, onClick}: IMenuDropdown) {
+export function MenuDropdown({id}: IMenuDropdown) {
 
-    const ref = useRef<HTMLButtonElement>(null)
+  const ref = useRef<HTMLButtonElement>(null)
 
-    useEffect(() => {
-        const onClick = (e: MouseEvent) =>e.target instanceof Node && ref.current?.contains(e.target) || console.log(e.target)
-        document.addEventListener('click', onClick)
-        return () => document.removeEventListener('click', onClick)
-    }, [])
+
+    function onClickBtn(e: MouseEvent) {
+      if (e.target instanceof Node && !ref.current?.contains(e.target)) {
+        console.log(ref.current?.getBoundingClientRect())
+      }
+    }
+    setTimeout(() => {
+      document.addEventListener('click', onClickBtn)
+    })
+
+
+
 
   return (
     <div>
