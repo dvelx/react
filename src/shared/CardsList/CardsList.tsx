@@ -42,5 +42,4 @@ export function CardsList() {
     );
   }
 }
-//{} ? [] : { posts.map((post: IPostCardData) => <Card key={post.id} title={post.title} author={post.author} url={post.thumbnail}/>) }
 

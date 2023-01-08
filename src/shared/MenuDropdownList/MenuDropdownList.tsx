@@ -62,8 +62,9 @@ const MENULIST = [
 interface IMenuDropdownList {
     onClose?: () => void;
     id?: string;
+    left?: number
 }
-export function MenuDropdownList({onClose, id}: IMenuDropdownList) {
+export function MenuDropdownList({onClose, id, left}: IMenuDropdownList) {
   const [list, setList] = React.useState(MENULIST);
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
