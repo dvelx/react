@@ -1,45 +1,41 @@
-import React, {MouseEventHandler, useEffect, useRef} from 'react';
+import React, { useEffect, useRef, useState} from 'react';
 import styles from './menudropdown.css';
 import {Dropdown} from "../../../Dropdown";
-import {MenuIcon} from "../../../Icons";
-import {MenuDropdownList} from "../../../MenuDropdownList";
 
-interface IMenuDropdown {
-    id?: string;
-    onClick?: () => void;
-    left?: number;
-    top?: number;
+
+
+export interface IMenuProps {
+  onClick: () => void;
 }
 
-export function MenuDropdown({id, left, top}: IMenuDropdown) {
+export function MenuDropdown() {
+  const [isOpen, setOpen] = useState(false);
+  const [btnRect, setBtnRect] = useState([0, 0]);
+  const btnRef = useRef<HTMLButtonElement>(null);
 
-  const ref = useRef<HTMLButtonElement>(null)
-
-  function onClickBtn(e: MouseEvent) {
-
-    if (e.target instanceof Node && ref.current?.contains(e.target)) {
-      left = ref.current?.getBoundingClientRect().x;
-      top = ref.current?.getBoundingClientRect().y;
+  useEffect(() => {
+    if (isOpen) {
+      if (!btnRef.current) return;
+      const rect = btnRef.current.getBoundingClientRect();
+      setBtnRect([rect.left, rect.top, rect.height]);
+      console.log(rect)
     }
-    return
-  }
-
-  function click() {
-      document.addEventListener('click', onClickBtn)
-  }
-
-
+  }, [isOpen]);
 
   return (
-    <div>
-      <Dropdown
-        button={
-        <button className={styles.menuButton} id={id} ref={ref} onClick={click}>
-          <MenuIcon />
-        </button>
-      }>
-      <MenuDropdownList id={id} left={left}/>
-      </Dropdown>
+    <div className={styles.menu}>
+      <button
+        className={styles.menuButton}
+        onClick={() => {
+          setOpen(!isOpen);
+        }}
+        ref={btnRef}>
+      </button>
+      {isOpen && (
+        <Dropdown
+          {...{ onClick: () => setOpen(!isOpen), btnRect }}
+        />
+      )}
     </div>
   );
 }

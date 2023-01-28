@@ -12,7 +12,7 @@ export function Buttons({score, num_comments, id}: IButtonsProps) {
   return (
     <div>
       <div className={styles.menu}>
-        <MenuDropdown id={id}/>
+        <MenuDropdown />
       </div>
 
 

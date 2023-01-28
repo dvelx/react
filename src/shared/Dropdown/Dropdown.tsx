@@ -1,46 +1,81 @@
-import React, {MouseEventHandler, useRef} from 'react';
+import React from 'react';
 import styles from './dropdown.css';
+import {GenericList} from "../GenereicList/GenericList";
+import {CommentIcon, SaveIcon, SharedIcon, StopIcon, WarningIcon} from "../Icons";
+import {generateId} from "../../utils/react/generateRandomIndex";
+const ReactDOM = require('react-dom');
+
+const MENULIST = [
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <CommentIcon />
+        <p>Комментарии</p>
+      </div>
+    ),
+    className: styles.menuItem
+  },
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <SharedIcon />
+        <p>Поделиться</p>
+      </div>
+    ),
+    className: styles.menuItem
+  },
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <StopIcon />
+        <p>Скрыть</p>
+      </div>
+    ),
+    className: styles.menuItem
+  },
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <SaveIcon />
+        <p>Сохранить</p>
+      </div>
+    ),
+    className: styles.menuItem
+  },
+  {
+    As: 'div' as const,
+    element: (
+      <div>
+        <WarningIcon />
+        <p>Пожаловаться</p>
+      </div>
+    ),
+    className: styles.menuItem
+  }
+].map(generateId);
 
 interface IDropdownProps {
-  button: React.ReactNode;
-  children: React.ReactNode;
-  isOpen?: boolean;
-  onClose?: () => void;
-  onOpen?: () => void;
-  left?: number;
-  top?: number
+  onClick: () => void;
+  btnRect: Array<number>;
 }
 
-const NOOP = () => {}
+export function Dropdown({ onClick, btnRect }: IDropdownProps) {
+  const [list, setList] = React.useState(MENULIST);
+  const node = document.getElementById("dropdown-root");
+  if (!node) return null;
 
-export function Dropdown({ button, children, isOpen, onClose = NOOP, onOpen = NOOP, left, top}: IDropdownProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
-  const ref = useRef<HTMLDivElement>(null)
-  React.useEffect(() =>setIsDropdownOpen(isOpen), [isOpen]);
-  React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen])
-
-  const handleOpen = (e: any) => {
-    if (isOpen === undefined) {
-      setIsDropdownOpen((!isDropdownOpen))
-    }
-    if (e.target instanceof Node && ref.current?.contains(e.target)) {
-      left = ref.current?.getBoundingClientRect().x;
-      top = ref.current?.getBoundingClientRect().y;
-    }
-  }
-  console.log(left, top)
-  return (
-    <div className={styles.container}>
-      <div onClick={handleOpen} ref={ref}>
-        { button }
+  return ReactDOM.createPortal(
+    <div
+      className={styles.container}
+      style={{ left: btnRect[0], top: btnRect[1] + btnRect[2] }}>
+      <div className={styles.listContainer} onClick={() => onClick()}>
+        <GenericList list={list} />
       </div>
-      { isDropdownOpen && (
-        <div className={styles.listContainer}>
-          <div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
-            {children}
-          </div>
-        </div>
-      )}
-    </div>
+    </div>,
+    node
   );
 }
